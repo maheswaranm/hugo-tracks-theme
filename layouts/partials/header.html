@@ -8,7 +8,10 @@
   </div>
   <div class="col-md-6">
     <div class="menu">
-      <a href="/">Home /</a>
+      {{ with .Site.Params.mainSiteURL }}
+      <a href="{{ .url | absURL }}"> {{ .name }} /</a>
+      {{ end }}
+      <a href="/">{{ .Site.Title }} Home /</a>
       {{ range $name, $taxonomy := .Site.Sections }}
       {{ if ne $name "post" }}
       <a href="/{{ $name | urlize }}">{{ $name }} / </a>
